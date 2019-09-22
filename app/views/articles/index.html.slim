@@ -1,0 +1,19 @@
+h1 Articles
+
+table
+  thead
+    tr
+      th Id
+      th Title
+      th Tags
+      th Actions
+  tbody
+    - @articles.each_with_index do |article, index|
+      tr
+        td = index + 1
+        td = article.id
+        td = article.title
+        td = article.tags.map(&:name).join(", ")
+        td = link_to "Edit", [:edit, article]
+
+= link_to "New", [:new, :article]

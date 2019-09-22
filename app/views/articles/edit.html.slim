@@ -1,0 +1,25 @@
+= form_for @article, local: true do |f|
+
+  p
+    = f.label      :title
+    = f.text_field :title, required: true
+
+  - if Tag.any?
+    p
+      = f.label :tag_ids, for: nil
+      = f.collection_check_boxes :tag_ids, \
+                                  Tag.all, :id, :name, \
+                                  {}, { required: false, id: nil } do |b|
+        = b.label for: nil
+          = b.check_box
+          = b.text
+  - else
+    p
+      | No tags.
+      =< link_to "Create a tag", [:new, :tag]
+
+  hr
+  = f.submit
+
+css:
+  label { display: block }
