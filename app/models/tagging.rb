@@ -4,8 +4,8 @@ class Tagging < ApplicationRecord
 
   # Associations
 
-  belongs_to :article
-  belongs_to :tag
+  belongs_to :article # , inverse_of: :taggings
+  belongs_to :tag     # , inverse_of: :taggings
 
 
   # Validations
